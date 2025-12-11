@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca82c09c-51fe-4215-9a21-04a3d6e8373a" name="更改" comment="init yolo">
-      <change beforePath="$PROJECT_DIR$/yolo_project/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/yolo_project/main.py" afterDir="false" />
+    <list default="true" id="ca82c09c-51fe-4215-9a21-04a3d6e8373a" name="更改" comment="finish yolo">
+      <change beforePath="$PROJECT_DIR$/.idea/HUST_AI_tech.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HUST_AI_tech.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minist/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/minist/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,16 +37,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/andy/Desktop/HUST_AI_tech&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/andy/Desktop/HUST_AI_tech",
+    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -77,11 +80,28 @@
       <option name="project" value="LOCAL" />
       <updated>1765423113968</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init yolo">
+      <option name="closed" value="true" />
+      <created>1765460130444</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765460130444</updated>
+    </task>
+    <task id="LOCAL-00004" summary="finish yolo">
+      <option name="closed" value="true" />
+      <created>1765460154667</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765460154667</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init yolo" />
-    <option name="LAST_COMMIT_MESSAGE" value="init yolo" />
+    <MESSAGE value="finish yolo" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish yolo" />
   </component>
 </project>
