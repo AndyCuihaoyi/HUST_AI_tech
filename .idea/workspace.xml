@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca82c09c-51fe-4215-9a21-04a3d6e8373a" name="更改" comment="finish yolo">
-      <change beforePath="$PROJECT_DIR$/.idea/HUST_AI_tech.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HUST_AI_tech.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minist/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/minist/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="ca82c09c-51fe-4215-9a21-04a3d6e8373a" name="更改" comment="finish mnist" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,12 +92,29 @@
       <option name="project" value="LOCAL" />
       <updated>1765460154667</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finish mnist">
+      <option name="closed" value="true" />
+      <created>1765465954444</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765465954444</updated>
+    </task>
+    <task id="LOCAL-00006" summary="finish mnist">
+      <option name="closed" value="true" />
+      <created>1765466033952</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765466033952</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init yolo" />
     <MESSAGE value="finish yolo" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish yolo" />
+    <MESSAGE value="finish mnist" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish mnist" />
   </component>
 </project>
