@@ -2,8 +2,18 @@
 from ultralytics import YOLO
 import cv2
 import time
-
-def yolo_video_detect(video_path, output_path="output_detect.mp4"):
+import os
+from pathlib import Path
+def yolo_video_detect(video_path, output_path=""):
+    if not output_path:  # 若未手动指定输出路径，则自动生成
+        # 解析原视频路径的文件名和上级目录
+        video_path_obj = Path(video_path)
+        # 提取原视频文件名（如test1.mp4）
+        video_filename = video_path_obj.name
+        # 拼接新路径：result/原文件名（自动创建result目录）
+        output_dir = "result"
+        os.makedirs(output_dir, exist_ok=True)  # 确保result目录存在
+        output_path = os.path.join(output_dir, video_filename)
     # 1. 加载YOLOv8n轻量化模型（强制CPU运行）
     model = YOLO('yolov8n.pt')
     model.to('cpu')  # 显式指定CPU设备
@@ -71,5 +81,5 @@ def yolo_video_detect(video_path, output_path="output_detect.mp4"):
 
 if __name__ == '__main__':
     # 替换为你的视频路径（支持mp4/avi/mov等常见格式）
-    VIDEO_PATH = "test_video.mp4"  # 本地视频文件路径
+    VIDEO_PATH = "test_vedio/hust_yolo_test3.mp4"  # 本地视频文件路径
     yolo_video_detect(VIDEO_PATH)
