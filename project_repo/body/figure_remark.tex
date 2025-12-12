@@ -1,0 +1,133 @@
+\section{部分实验图表分析}
+表格\ref{tab:scheme_features}系统梳理 AutoNUMA、TPP、Memtis 等 6 种主流方案的核心设计（如实现层级、跟踪策略、元数据管理方式），明确各方案的优势（如 HybridTier 轻量低耗、支持多页模式）与短板（如 Memtis 动态热度适配慢、元数据开销高），让不同方案的技术差异直观可辨，为分层系统选型提供直接参考。
+\begin{table}[htbp]
+  \centering
+  \caption{6种主流内存分层方案核心特点}
+  \label{tab:scheme_features}
+  \resizebox{0.95\textwidth}{!}{% 适度加宽表格宽度
+  \small  
+    \begin{tabular}{@{}>{\bfseries}c p{10cm}@{}} % 序号列加粗，特点列设固定宽度自动换行
+      \toprule
+      序号 & \textbf{方案名称及核心特点} \\
+      \midrule
+      1 & \textbf{AutoNUMA}：通过LRU策略跟踪页面近期访问性，无频率维度识别能力，易导致冷热数据误分类。 \\
+      \midrule
+      2 & \textbf{TPP}：聚焦CXL内存的页级迁移优化，基于访问延迟反馈调整页面位置；依赖硬件NUMA节点模拟CXL特性，迁移决策仅考虑局部节点；因内核态实现，迁移开销略高。 \\
+      \midrule
+      3 & \textbf{Memtis}：支持持久化内存与CXL内存双层架构，通过频率直方图跟踪页面访问频率；采用哈希表存储精确计数，元数据开销高；对动态热度分布的适应速度较慢（分钟级）。 \\
+      \midrule
+      4 & \textbf{ARC}：轻量级混合LRU列表缓存算法，可区分单次与多次访问项；因不维护频率计数，无法区分热数据与温数据；在快层占比低的资源受限场景中性能衰减明显。 \\
+      \midrule
+      5 & \textbf{TwoQ}：采用FIFO+LRU双队列缓存策略，分离新访问与频繁访问页面；实现简单且缓存开销低，但对高倾斜度的访问分布适配性较差。 \\
+      \midrule
+      6 & \textbf{HybridTier}：通过频率+动量双指标跟踪适配动态热度；采用计数布隆过滤器（CBF）降低元数据内存与缓存开销；支持4KB页与2MB巨页。 \\
+      \bottomrule
+    \end{tabular}
+  }
+  \vspace{1pt}
+  \footnotesize 注：所有方案均为应用透明型，无需修改业务代码即可部署。
+\end{table}
+
+表格\ref{tab:workload_features}提炼 CacheLib（CDN 缓存）、GAP（图计算）、Silo（数据库）等 6 类典型大内存负载的核心访问特征（如热点动态性、局部性、读写比例），覆盖互联网缓存、科学计算、AI 训练、数据库等关键应用场景，确保后续实验负载能代表真实业务需求，避免实验结论局限于单一场景。
+
+\begin{table}[htbp]
+  \centering
+  \caption{6类测试负载核心特点}
+  \label{tab:workload_features}
+  \resizebox{0.95\textwidth}{!}{% 适度加宽表格宽度
+  \small  
+    \begin{tabular}{@{}>{\bfseries}c p{10cm}@{}} % 
+      \toprule
+      序号 & \textbf{负载类型及核心特点} \\
+      \midrule
+      1 & \textbf{CacheLib}：CDN缓存，热点动态变化 \\
+      \midrule
+      2 & \textbf{GAP}：图计算，随机访问局部性差 \\
+      \midrule
+      3 & \textbf{SPEC CPU 2017}：访问模式相对稳定 \\
+      \midrule
+      4 & \textbf{Silo}：数据库，热点集中读写混合 \\
+      \midrule
+      5 & \textbf{XGBoost}：机器学习，阶段性热点显著 \\
+      \midrule
+      6 & \textbf{BFS}：图遍历，热点随层级变化 \\
+      \bottomrule
+    \end{tabular}
+  }
+  \vspace{1pt}
+\end{table}
+
+\subsection{CacheLib工作负载实验分析}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{images/cachelib_workload_analysis.png}
+  \caption{CacheLib工作负载实验结果分析}
+  \label{fig:cachelib_workload_analysis}
+\end{figure}
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=10pt]
+    \item \textbf{实验目标（Experiment Target）} \\
+    评估不同内存分层方案在CacheLib两类子工作负载（CDN、社交图谱）下的性能（延迟、吞吐量），验证各方案对不同快/慢内存比例的适配能力。
+
+    \item \textbf{实验设计思想（Experiment Methodology）} \\
+    选取6种内存分层方案（TPP、AutoNUMA、Memtis、ARC、TwoQ、HybridTier），在CacheLib的CDN与社交图谱子工作负载下开展测试；以“快层内存（DRAM）:慢层内存（CXL内存）”的比例（1:16、1:8、1:4）为变量，分别测量各方案的中位数延迟与吞吐量指标。
+
+    \item \textbf{实验具体配置（Experiment Configuration）} \\
+    - 测试工作负载：CacheLib CDN工作负载、CacheLib社交图谱工作负载； \\
+    - 内存分层方案：TPP、AutoNUMA、Memtis、ARC、TwoQ、HybridTier； \\
+    - 内存比例：快层内存:慢层内存 = 1:16、1:8、1:4； \\
+    - 测量指标：中位数延迟（单位：微秒）、吞吐量（单位：Mop/s，每秒百万操作数）。
+
+    \item \textbf{图表标记含义（x-axis and y-axis）} \\
+    - 横坐标：快层内存与慢层内存的比例（1:16、1:8、1:4）； \\
+    - 纵坐标：
+      \begin{itemize}[label=-]
+        \item 左图：中位数延迟（单位：$\mu$s，微秒）；
+        \item 右图：吞吐量（单位：Mop/s，每秒百万操作数）；
+      \end{itemize}
+    - 图表类型：分组柱状图； \\
+    - 系列标记：不同颜色代表不同内存分层方案（TPP：灰色，AutoNUMA：橙色，Memtis：黄色，ARC：深蓝色，TwoQ：绿色，HybridTier：浅蓝色）。
+
+    \item \textbf{实验结论（Experiment Conclusion）} \\
+    在CacheLib两类工作负载下，HybridTier方案的综合性能（低延迟、高吞吐量）显著优于其他5种方案；Memtis的性能波动较大（在1:4比例下延迟明显升高），而HybridTier在不同内存比例下的性能表现更稳定。
+
+    \item \textbf{结果解释（Experiment Explanation）} \\
+    - HybridTier采用“频率+动量”双指标跟踪，能更好适配CacheLib工作负载的动态热点变化，因此在不同内存比例下均保持低延迟与高吞吐量； \\
+    - Memtis依赖频率直方图跟踪热点，对CacheLib的动态热点适应速度慢，当快层内存占比降低（如1:4）时，易出现冷页误晋升导致的快层内存污染，进而推高延迟、降低吞吐量； \\
+    - 其他方案（如AutoNUMA、ARC）因仅跟踪单一维度（近期访问性），无法精准识别动态热点，性能表现弱于HybridTier。
+\end{enumerate}
+
+
+\subsection{动态访问分布适应时间实验分析}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{images/dynamic_access_distribution_adaptation_time.png}
+  \caption{动态访问分布适应时间实验结果分析}
+  \label{fig:dynamic_access_distribution_adaptation_time}
+\end{figure}
+\begin{enumerate}[label=\textbf{\alph*.}, itemsep=10pt]
+    \item \textbf{实验目标（Experiment Target）} \\
+    评估不同内存分层方案在访问分布发生变化后，达到稳态性能所需的适应时间，验证各方案对动态访问模式的响应能力。
+
+    \item \textbf{实验设计思想（Experiment Methodology）} \\
+    选取Memtis与HybridTier两种内存分层方案，在CDN和Social-graph两类工作负载下，测试不同快/慢内存比例（1:16、1:8、1:4）下，方案延迟达到稳态中位数延迟1%以内所需的时间；通过对比两类方案的适应时间，量化HybridTier的动态适配优势。
+
+    \item \textbf{实验具体配置（Experiment Configuration）} \\
+    - 测试工作负载：CDN工作负载、Social-graph工作负载； \\
+    - 内存分层方案：Memtis、HybridTier； \\
+    - 内存比例：快层内存:慢层内存 = 1:16、1:8、1:4； \\
+    - 评估指标：适应时间（单位：分钟，定义为延迟接近稳态的时间）。
+
+    \item \textbf{表格标记含义} \\
+    - 行维度：包含2种内存分层方案（Memtis、HybridTier）及两者的适应时间相对减少幅度； \\
+    - 列维度：分为CDN与Social-graph两类工作负载，每类负载下包含3种快/慢内存比例（1:16、1:8、1:4）； \\
+    - 数据项：单元格数值为对应方案在特定负载与内存比例下的适应时间（单位：分钟），“>60”表示适应时间超过60分钟。
+
+    \item \textbf{实验结论（Experiment Conclusion）} \\
+    HybridTier对动态访问分布的适应速度显著优于Memtis：在两类工作负载与各内存比例下，HybridTier的适应时间均远短于Memtis，且适应时间的稳定性更强；相对Memtis，HybridTier的适应时间最多可减少5.9倍。
+
+    \item \textbf{结果解释（Experiment Explanation）} \\
+    - Memtis依赖频率直方图跟踪访问模式，更新频率低、对动态变化响应慢，因此在多数场景下适应时间超过60分钟； \\
+    - HybridTier采用“频率+动量”双指标跟踪，动量指标可快速捕捉短期访问变化，因此能在25分钟内（CDN负载）或10分钟内（Social-graph负载）适应新的访问分布； \\
+    - 内存比例对Memtis的适应时间影响极大（如Social-graph负载下1:8比例需>60分钟、1:4比例仅需29.6分钟），而HybridTier的适应时间受内存比例影响较小，体现了其更强的场景适配稳定性。
+\end{enumerate}
+

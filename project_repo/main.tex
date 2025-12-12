@@ -1,0 +1,43 @@
+\documentclass[thesis,biblatex]{template/hust}
+
+% \addbibresource{ref.bib}
+\usepackage{macros}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\title{MNIST手写数字识别、YOLO目标检测及“AI+X”项目报告}
+
+\author{崔皓奕}
+\school{计算机科学与技术}
+\classnum{硕2502班}
+\stunum{M202574020}
+\date{2025年12月15日}
+
+
+% 毕业论文模板
+\begin{document}
+    \maketitle                              % 封面
+    \newpage
+    % \authorization                          % 原创页（不保密）
+    % % \authorization[x]                     % 原创页（保密 x 年）
+    
+    % \pagenumbering{Roman}
+    % \include{body/abstract-ch}              % 中文摘要
+    % \include{body/abstract-en}              % 英文摘要
+    \tableofcontents                        % 目录
+    % \newpage
+    % \pagenumbering{arabic}
+    \include{body/MNIST} 
+    \include{body/YOLO}
+    \include{body/ai_project}   
+    %\include{body/related_works}
+    % \include{body/method}
+    % \include{body/experiments}
+    
+    
+    % \include{body/acknowledgement}          % 致谢
+    % \include{body/references}               % 参考文献
+    % \appendix                               % 附录
+    % \include{body/appendices}
+
+\end{document}

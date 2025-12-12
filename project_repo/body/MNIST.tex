@@ -1,0 +1,265 @@
+\section{MNIST手写数字识别}
+
+\subsection{任务概述}
+
+\subsubsection{MNIST 数据集}
+MNIST 是手写数字识别经典数据集，包含 60000 张训练样本和 10000 张测试样本，每张样本为 28×28 像素的灰度图像，标签为 0-9 的数字，是深度学习入门的标准基准数据集。
+
+\subsubsection{卷积神经网络（CNN）}
+CNN 是专为处理网格结构数据（如图像）设计的深度学习模型，通过卷积层（Convolutional Layer）提取局部特征、池化层（Pooling Layer）降维并保留关键特征，全连接层（Fully Connected Layer）完成分类，相比全连接神经网络，CNN 具有参数少、抗过拟合、特征提取能力强的优势。
+
+基于卷积神经网络（CNN）实现 MNIST 手写数字识别，具体任务步骤如下：
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{数据准备阶段}：导入深度学习所需核心库，设置随机种子保证实验可复现；对 MNIST 数据集进行预处理（如归一化、维度调整、标签编码等），并完成数据集的加载与划分（训练集/测试集）。
+    \item \textbf{模型定义阶段}：构建轻量级卷积神经网络（CNN）模型，包含卷积层、池化层、全连接层等核心模块，实现手写数字特征提取与分类。
+    \item \textbf{模型训练阶段}：选择合适的损失函数（如交叉熵损失）和优化器（如 Adam/SGD），设置训练超参数（批次大小、迭代轮数等），完成模型的训练过程，并监控训练过程中的损失/精度变化。
+    \item \textbf{模型测试阶段}：使用测试集评估训练完成的模型性能，计算测试集的准确率、精确率等关键指标，验证模型泛化能力。
+    \item \textbf{结果可视化阶段}：可视化训练/测试损失曲线、准确率曲线，以及随机抽取测试样本的预测结果（如展示手写数字图像与模型预测标签）。
+\end{enumerate}
+
+
+\subsubsection{核心技术栈}
+\begin{itemize}
+    \item 框架：PyTorch/TensorFlow/Keras（主流深度学习框架）；
+    \item 数据处理：NumPy、Pandas（数值计算），Matplotlib/Seaborn（可视化）；
+    \item 核心算法：卷积运算、池化操作、反向传播、梯度下降优化（Adam/SGD）。
+\end{itemize}
+
+\subsection{MNIST手写数字识别实现}
+\subsubsection{Python 环境与框架搭建}
+\begin{enumerate}[label=\arabic{enumi}.]
+    \item \textbf{环境配置}：安装 Python 3.8+ 版本，通过 pip/conda 安装核心依赖包，命令如下：
+    \begin{lstlisting}
+# 安装PyTorch（以CPU版本为例，GPU版本需适配CUDA）
+pip install torch torchvision
+# 安装数据处理与可视化库
+pip install numpy matplotlib pandas
+    \end{lstlisting}
+    \item \textbf{框架选择}：选用 PyTorch 框架实现，其动态计算图特性便于调试，且 torchvision 内置 MNIST 数据集加载接口，降低开发成本。
+    \item \textbf{环境验证}：编写测试代码验证库是否安装成功，确保无导入错误。
+\end{enumerate}
+
+\subsubsection{数据集准备}
+\begin{enumerate}[label=\arabic{enumi}.]
+    \item \textbf{数据集加载}：通过 torchvision.datasets.MNIST 自动下载/加载数据集，指定数据存储路径、训练/测试集标识；
+    \item \textbf{数据预处理}：
+        \begin{itemize}
+            \item 图像归一化：将像素值从 [0,255] 缩放到 [0,1]，消除量纲影响；
+            \item 维度调整：将 28×28 灰度图转换为 (1,28,28) 维度（通道数×高度×宽度），适配 CNN 输入格式；
+            \item 数据增强（可选）：如随机旋转、平移，提升模型泛化能力；
+        \end{itemize}
+    \item \textbf{数据加载器构建}：使用 torch.utils.data.DataLoader 封装数据集，设置批次大小（\texttt{batch\_size}）、是否打乱（\texttt{shuffle}）等参数，实现批量数据读取。
+\end{enumerate}
+
+\subsubsection{Python 代码实现和调试}
+\lstset{
+    language=Python,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    frame=single,
+    breaklines=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=left,          % 显示行号
+    numberstyle=\tiny\color{gray}, % 行号样式
+    captionpos=b           % 代码标题在下方
+}
+\begin{enumerate}
+  \item 环境初始化与数据预处理:设置随机种子保证实验可复现性，定义训练超参数（轮数、批次大小、学习率），通过torchvision加载MNIST数据集并完成归一化预处理，构建数据加载器实现批量训练。
+  \begin{lstlisting}[caption={环境初始化与数据加载}]
+import torch
+import torch.nn as nn
+import torch.utils.data as Data
+import torchvision
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 设置随机种子确保可复现性
+torch.manual_seed(1)
+
+# 超参数定义
+EPOCH = 3  # 训练轮数
+BATCH_SIZE = 50
+LR = 0.001
+
+# 加载MNIST数据集并归一化（ToTensor自动将像素值缩放到[0,1]）
+train_data = torchvision.datasets.MNIST(
+    root='./data/', train=True, transform=torchvision.transforms.ToTensor(), download=True
+)
+test_data = torchvision.datasets.MNIST(
+    root='./data/', train=False, transform=torchvision.transforms.ToTensor()
+)
+
+# 构建批训练加载器，shuffle=True打乱训练数据
+train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
+
+# 测试集预处理（适配CNN输入维度）
+test_x = test_data.data[:2000].unsqueeze(1).type(torch.FloatTensor) / 255.0
+test_y = test_data.targets[:2000]
+\end{lstlisting}
+\item 轻量级CNN模型定义:构建包含两层卷积+池化、一层全连接的轻量级CNN：卷积层提取图像局部特征，池化层降维减少参数，全连接层完成10分类（0-9数字）；forward函数定义前向传播流程。
+\begin{lstlisting}[caption={CNN模型定义}]
+class CNN(nn.Module):
+    def __init__(self):
+        super(CNN, self).__init__()
+        # 第一层卷积：1通道→16通道，卷积核5×5，填充2，ReLU激活+最大池化
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(1, 16, 5, 1, 2),  # 输入[batch,1,28,28] → 输出[batch,16,28,28]
+            nn.ReLU(),
+            nn.MaxPool2d(2),             # 池化后[batch,16,14,14]
+        )
+        # 第二层卷积：16通道→32通道，同上
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(16, 32, 5, 1, 2),  # 输入[batch,16,14,14] → 输出[batch,32,14,14]
+            nn.ReLU(),
+            nn.MaxPool2d(2),             # 池化后[batch,32,7,7]
+        )
+        # 全连接层：展平特征→10分类输出
+        self.out = nn.Linear(32 * 7 * 7, 10)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.conv2(x)
+        x = x.view(x.size(0), -1)  # 展平：[batch,32,7,7] → [batch,32×7×7]
+        output = self.out(x)
+        return output
+
+# 初始化模型
+cnn = CNN()
+\end{lstlisting}
+\item 模型训练与指标记录:选择Adam优化器和交叉熵损失函数，迭代训练模型；每50步计算测试集准确率，记录训练损失和准确率，用于后续可视化。
+\begin{lstlisting}[caption={模型训练}]
+# 优化器和损失函数
+optimizer = torch.optim.Adam(cnn.parameters(), lr=LR)
+loss_func = nn.CrossEntropyLoss()
+
+# 初始化训练指标记录字典
+train_metrics = {'epochs': [], 'steps': [], 'losses': [], 'accuracies': []}
+
+# 开始训练
+for epoch in range(EPOCH):
+    for step, (b_x, b_y) in enumerate(train_loader):
+        output = cnn(b_x)          # 前向传播
+        loss = loss_func(output, b_y)  # 计算损失
+
+        optimizer.zero_grad()      # 梯度清零
+        loss.backward()            # 反向传播
+        optimizer.step()           # 更新参数
+
+        # 每50步记录并打印训练指标
+        if step % 50 == 0:
+            test_output = cnn(test_x)
+            pred_y = torch.max(test_output, 1)[1].numpy()
+            # 计算测试集准确率（百分比）
+            accuracy = float((pred_y == test_y.numpy()).sum()) / float(test_y.size(0)) * 100
+            
+            # 记录指标
+            train_metrics['epochs'].append(epoch)
+            train_metrics['steps'].append(step)
+            train_metrics['losses'].append(loss.item())
+            train_metrics['accuracies'].append(accuracy)
+            
+            # 打印训练状态
+            print(f'Epoch: {epoch}/{EPOCH} | Step: {step} | Loss: {loss.item():.4f} | Test Acc: {accuracy:.2f}%')
+
+# 保存训练好的模型
+torch.save(cnn.state_dict(), 'cnn_mnist.pkl')
+\end{lstlisting}
+\item 结果可视化:使用Matplotlib绘制训练损失曲线和测试准确率曲线，直观展示模型训练过程中的性能变化。
+\begin{lstlisting}[caption={结果可视化（核心片段）}]
+# 1. 绘制损失&准确率曲线
+plt.figure(figsize=(10, 5))
+# 子图1：损失曲线
+plt.subplot(1, 2, 1)
+plt.plot(train_metrics['steps'], train_metrics['losses'], 'b-', label='Training Loss')
+plt.xlabel('Steps'), plt.ylabel('Loss'), plt.title('Training Loss Curve'), plt.grid(True)
+
+# 子图2：准确率曲线
+plt.subplot(1, 2, 2)
+plt.plot(train_metrics['steps'], train_metrics['accuracies'], 'r-', label='Test Accuracy')
+plt.xlabel('Steps'), plt.ylabel('Accuracy (%)'), plt.title('Test Accuracy Curve'), plt.ylim(0,100), plt.grid(True)
+
+plt.tight_layout(), plt.savefig('training_metrics.png'), plt.show()
+
+# 2. 可视化32个样本预测结果（区分正确/错误）
+inputs = test_x[:32]
+test_output = cnn(inputs)
+pred_y = torch.max(test_output, 1)[1].numpy()
+true_y = test_y[:32].numpy()
+
+plt.figure(figsize=(16, 8))
+for i in range(32):
+    plt.subplot(4, 8, i+1)
+    img = inputs[i].squeeze().numpy()
+    plt.imshow(img, cmap='gray')
+    # 正确标绿，错误标红
+    color = 'green' if pred_y[i]==true_y[i] else 'red'
+    plt.title(f'True: {true_y[i]}\nPred: {pred_y[i]}', color=color, fontsize=8)
+    plt.xticks([]), plt.yticks([])
+
+plt.suptitle(f'Prediction Results (Acc: {(pred_y==true_y).sum()/32*100:.1f}%)'), plt.tight_layout(), plt.savefig('predictions.png'), plt.show()
+
+# 3. 错误样本单独可视化
+wrong_idx = np.where(pred_y != true_y)[0]
+if len(wrong_idx) > 0:
+    plt.figure(figsize=(12, 6))
+    for i, idx in enumerate(wrong_idx[:16]):  # 最多展示16个错误样本
+        plt.subplot(4, 4, i+1)
+        img = inputs[idx].squeeze().numpy()
+        plt.imshow(img, cmap='gray')
+        plt.title(f'True: {true_y[idx]}\nPred: {pred_y[idx]}', color='red', fontsize=10)
+        plt.xticks([]), plt.yticks([])
+    plt.suptitle(f'Wrong Predictions (Error Rate: {len(wrong_idx)/32*100:.2f}%)'), plt.tight_layout(), plt.savefig('wrong_predictions.png'), plt.show()
+\end{lstlisting}
+
+\end{enumerate}
+
+\newpage
+\subsection{测试结果与分析}
+
+\begin{enumerate}
+  \item \textbf{测试结果}：经过3轮训练，模型在2000个测试样本上达到约98.5\%的准确率，损失值逐步下降，表明模型有效学习到了手写数字的特征。
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/mnist_predictions_with_labels.png}
+    \caption{部分测试样本预测结果可视化}
+  \end{figure}
+  \item 损失曲线显示训练过程中损失稳步下降，准确率曲线则显示测试准确率逐渐提升，验证了模型的收敛性和泛化能力。
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/training_accuracy_curve.png}
+    \caption{训练损失与测试准确率曲线训练损失与测试准确率曲线}
+  \end{figure}
+  \item 可视化结果中，大部分样本预测正确，错误样本数量较少，且错误样本多为书写模糊或形似数字，符合预期。
+\end{enumerate}
+
+\subsection{总结与收获}
+本次基于CNN实现MNIST手写数字识别的实践，从环境搭建、数据处理到模型训练与可视化，完整覆盖了深度学习入门的核心流程，主要总结与收获如下：
+
+\subsubsection{1. 技术能力提升}
+\begin{enumerate}[ itemsep=5pt]
+    \item \textbf{深度学习基础落地能力}：掌握了PyTorch框架下数据集加载、预处理的标准流程，理解了ToTensor归一化、维度调整等操作对CNN输入的适配逻辑；掌握了CNN核心模块（卷积层、池化层、全连接层）的设计原理，能根据输入输出维度合理设计网络结构，理解“特征提取-降维-分类”的核心范式。
+    \item \textbf{模型训练与调优思维}：熟悉了Adam优化器、交叉熵损失函数的适用场景，掌握了训练循环的编写逻辑（前向传播→损失计算→反向传播→参数更新）；学会通过监控训练损失和测试准确率判断模型训练状态，理解超参数（学习率、批次大小、训练轮数）对模型性能的影响。
+    \item \textbf{结果可视化与分析能力}：掌握了Matplotlib绘制训练曲线、样本预测结果的方法，能通过可视化直观分析模型训练趋势（如损失下降、准确率提升），并针对错误样本定位模型不足，形成“训练-评估-分析”的闭环思维。
+\end{enumerate}
+
+\subsubsection{2. 工程实践认知}
+\begin{enumerate}[ itemsep=5pt]
+    \item \textbf{可复现性与规范性}：理解了设置随机种子的重要性，保证实验结果可复现；学会模块化编写代码（数据加载、模型定义、训练、可视化分离），提升代码可读性和可维护性。
+    \item \textbf{问题排查与调试}：在实践中解决了数据集维度不匹配、测试集加载兼容等问题，掌握了通过打印维度、分步验证的方式定位代码错误，提升了调试能力。
+    \item \textbf{模型性能认知}：通过本次实践验证了轻量级CNN在MNIST数据集上的优异性能（测试准确率可达98\%以上），理解了CNN相比全连接网络在图像识别任务中的优势（参数更少、特征提取更高效）。
+\end{enumerate}
+
+\subsubsection{3. 后续改进方向}
+本次实践为深度学习入门打下了基础，后续可从以下方向优化：
+\begin{itemize}[itemsep=3pt]
+    \item 引入数据增强（如随机旋转、平移、缩放），进一步提升模型泛化能力；
+    \item 尝试调整网络结构（如增加卷积层、使用Dropout层），解决潜在的过拟合问题；
+    \item 对比不同优化器（SGD、RMSprop）、学习率调度策略对模型训练的影响；
+    \item 部署训练好的模型，实现单张手写数字图片的离线预测功能。
+\end{itemize}
+
+\subsubsection{4. 核心感悟}
+深度学习的核心是“数据+模型+训练”的协同优化，本次实践让我深刻体会到：入门阶段无需追求复杂模型，通过经典数据集（MNIST）掌握基础流程和核心原理，是理解深度学习的关键；而可视化分析和问题调试能力，是从“代码实现”到“理解本质”的重要桥梁。本次实践不仅掌握了具体的技术方法，更建立了深度学习的工程化思维，为后续更复杂的图像识别任务奠定了基础。
