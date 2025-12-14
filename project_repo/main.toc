@@ -31,14 +31,14 @@
 \contentsline {subsection}{\numberline {2.3}目标检测测试与分析}{21}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}视频选择}{21}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}测试效果与分析}{21}{subsubsection.2.3.2}%
-\contentsline {paragraph}{1. 有效检测场景}{21}{Item.29}%
-\contentsline {paragraph}{2. 检测误差场景}{22}{Item.29}%
-\contentsline {paragraph}{1. 有效检测场景}{22}{Item.30}%
-\contentsline {paragraph}{2. 典型检测误差}{23}{Item.30}%
+\contentsline {paragraph}{有效检测场景}{21}{Item.29}%
+\contentsline {paragraph}{检测误差场景}{22}{Item.29}%
+\contentsline {paragraph}{有效检测场景}{22}{Item.30}%
+\contentsline {paragraph}{典型检测误差}{23}{Item.30}%
 \contentsline {subsection}{\numberline {2.4}总结与收获}{24}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}技术能力与工程实践提升}{24}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.1}技术能力与工程实践提升}{25}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}目标检测技术认知深化}{26}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}校园场景应用与拓展思考}{26}{subsubsection.2.4.3}%
-\contentsline {subsubsection}{\numberline {2.4.4}核心感悟与思维升华}{26}{subsubsection.2.4.4}%
+\contentsline {subsubsection}{\numberline {2.4.4}核心感悟与思维升华}{27}{subsubsection.2.4.4}%
 \contentsline {section}{\numberline {3}AI+X项目汇报}{28}{section.3}%
 \contentsline {section}{附录}{39}{figure.caption.26}%

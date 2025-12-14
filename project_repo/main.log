@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  14 DEC 2025 08:30
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  14 DEC 2025 14:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1952,11 +1952,6 @@ Package fancyhdr Warning: \headheight is too small (36.1pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
 
 [12] (./body/YOLO.tex
-Missing character: There is no ① (U+2460) in font Times New Roman/OT:script=latn;language=dflt;mapping=tex-text;!
-Missing character: There is no ① (U+2460) in font Times New Roman/OT:script=latn;language=dflt;mapping=tex-text;!
-Missing character: There is no ① (U+2460) in font Times New Roman/OT:script=latn;language=dflt;mapping=tex-text;!
-Missing character: There is no ① (U+2460) in font Times New Roman/OT:script=latn;language=dflt;mapping=tex-text;!
-
 
 
 Package fancyhdr Warning: \headheight is too small (36.1pt): 
@@ -2289,7 +2284,7 @@ Package fancyhdr Warning: \headheight is too small (36.1pt):
 
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251214083021 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted cleantemp  --timestamp 20251214143158 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./main.aux)
  ***********
@@ -2311,10 +2306,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 (\end occurred when \ifx on line 41 was incomplete)
 (\end occurred when \ifx on line 2 was incomplete) 
 Here is how much of TeX's memory you used:
- 60884 strings out of 473832
- 1455839 string characters out of 5733158
- 2861674 words of memory out of 5000000
- 82847 multiletter control sequences out of 15000+600000
+ 60893 strings out of 473832
+ 1456474 string characters out of 5733158
+ 2861662 words of memory out of 5000000
+ 82856 multiletter control sequences out of 15000+600000
  577618 words of font info for 172 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  133i,12n,134p,1167b,2170s stack positions out of 10000i,1000n,20000p,200000b,200000s
