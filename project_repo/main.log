@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  12 DEC 2025 17:00
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.9)  14 DEC 2025 08:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2056,4 +2056,267 @@ Package fancyhdr Warning: \headheight is too small (36.1pt):
 (fancyhdr)                Make it at least 37.01845pt, for example:
 (fancyhdr)                \setlength{\headheight}{37.01845pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)            
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[22]
+File: images/yolo_test2_1.png Graphic file (type bmp)
+<images/yolo_test2_1.png>
+File: images/yolo_test2_2.png Graphic file (type bmp)
+<images/yolo_test2_2.png>
+File: images/yolo_test2_3.png Graphic file (type bmp)
+<images/yolo_test2_3.png>
+File: images/yolo_test2_4.png Graphic file (type bmp)
+<images/yolo_test2_4.png>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[23]
+File: images/yolo_test3_1.png Graphic file (type bmp)
+<images/yolo_test3_1.png>
+File: images/yolo_test3_2.png Graphic file (type bmp)
+<images/yolo_test3_2.png>
+File: images/yolo_test3_3.png Graphic file (type bmp)
+<images/yolo_test3_3.png>
+File: images/yolo_test3_4.png Graphic file (type bmp)
+<images/yolo_test3_4.png>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[24]
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[25]
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[26])
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[27] (./body/ai_project.tex
+File: images/AI_project/slide1.JPG Graphic file (type bmp)
+<images/AI_project/slide1.JPG>
+File: images/AI_project/slide2.JPG Graphic file (type bmp)
+<images/AI_project/slide2.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[28
+
+
+]
+File: images/AI_project/slide3.JPG Graphic file (type bmp)
+<images/AI_project/slide3.JPG>
+File: images/AI_project/slide4.JPG Graphic file (type bmp)
+<images/AI_project/slide4.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[29]
+File: images/AI_project/slide5.JPG Graphic file (type bmp)
+<images/AI_project/slide5.JPG>
+File: images/AI_project/slide6.JPG Graphic file (type bmp)
+<images/AI_project/slide6.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[30]
+File: images/AI_project/slide7.JPG Graphic file (type bmp)
+<images/AI_project/slide7.JPG>
+File: images/AI_project/slide8.JPG Graphic file (type bmp)
+<images/AI_project/slide8.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[31]
+File: images/AI_project/slide9.JPG Graphic file (type bmp)
+<images/AI_project/slide9.JPG>
+File: images/AI_project/slide10.JPG Graphic file (type bmp)
+<images/AI_project/slide10.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[32]
+File: images/AI_project/slide11.JPG Graphic file (type bmp)
+<images/AI_project/slide11.JPG>
+File: images/AI_project/slide12.JPG Graphic file (type bmp)
+<images/AI_project/slide12.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[33]
+File: images/AI_project/slide13.JPG Graphic file (type bmp)
+<images/AI_project/slide13.JPG>
+File: images/AI_project/slide14.JPG Graphic file (type bmp)
+<images/AI_project/slide14.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[34]
+File: images/AI_project/slide15.JPG Graphic file (type bmp)
+<images/AI_project/slide15.JPG>
+File: images/AI_project/slide16.JPG Graphic file (type bmp)
+<images/AI_project/slide16.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[35]
+File: images/AI_project/slide17.JPG Graphic file (type bmp)
+<images/AI_project/slide17.JPG>
+File: images/AI_project/slide18.JPG Graphic file (type bmp)
+<images/AI_project/slide18.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[36]
+File: images/AI_project/slide19.JPG Graphic file (type bmp)
+<images/AI_project/slide19.JPG>
+File: images/AI_project/slide20.JPG Graphic file (type bmp)
+<images/AI_project/slide20.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[37]
+File: images/AI_project/slide21.JPG Graphic file (type bmp)
+<images/AI_project/slide21.JPG>
+
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[38]) (./body/appendices.tex)
+
+
+Package fancyhdr Warning: \headheight is too small (36.1pt): 
+(fancyhdr)                Make it at least 37.01845pt, for example:
+(fancyhdr)                \setlength{\headheight}{37.01845pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.91844pt}.
+
+[39
+
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251214083021 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+
+ (./main.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2022/08/05>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.47188pt have occurred.
+
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 15A3711A48D680BE351DDBCAEB8F0171;1277.
+Package logreq Info: Writing requests to 'main.run.xml'.
+\openout1 = `main.run.xml'.
+
+ )
+(\end occurred when \ifx on line 41 was incomplete)
+(\end occurred when \ifx on line 41 was incomplete)
+(\end occurred when \ifx on line 2 was incomplete) 
+Here is how much of TeX's memory you used:
+ 60884 strings out of 473832
+ 1455839 string characters out of 5733158
+ 2861674 words of memory out of 5000000
+ 82847 multiletter control sequences out of 15000+600000
+ 577618 words of font info for 172 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 133i,12n,134p,1167b,2170s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on main.pdf (40 pages).

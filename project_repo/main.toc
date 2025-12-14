@@ -1,0 +1,44 @@
+\contentsline {section}{\numberline {1}MNIST手写数字识别}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}任务概述}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}MNIST 数据集}{2}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}卷积神经网络（CNN）}{2}{subsubsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.3}核心技术栈}{3}{subsubsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.2}MNIST手写数字识别实现}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Python 环境与框架搭建}{3}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}数据集准备}{3}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Python 代码实现和调试}{4}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.3}测试结果与分析}{10}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}总结与收获}{11}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}1. 技术能力提升}{11}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}2. 工程实践认知}{11}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}3. 后续改进方向}{12}{subsubsection.1.4.3}%
+\contentsline {subsubsection}{\numberline {1.4.4}4. 核心感悟}{12}{subsubsection.1.4.4}%
+\contentsline {section}{\numberline {2}YOLO目标检测实验}{13}{section.2}%
+\contentsline {subsection}{\numberline {2.1}任务概述}{13}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}人工智能与图像识别}{13}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}YOLO目标检测简介}{13}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}YOLO目标检测实现}{14}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}平台搭建与插件准备}{14}{subsubsection.2.2.1}%
+\contentsline {paragraph}{1. 环境配置}{14}{subsubsection.2.2.1}%
+\contentsline {paragraph}{2. 硬件与平台选择}{14}{lstnumber.5.4}%
+\contentsline {paragraph}{3. 预训练权重准备}{14}{lstnumber.5.4}%
+\contentsline {subsubsection}{\numberline {2.2.2}代码实现和调试}{14}{subsubsection.2.2.2}%
+\contentsline {paragraph}{模块1：路径处理（自动生成检测结果保存路径）}{14}{subsubsection.2.2.2}%
+\contentsline {paragraph}{模块2：模型初始化（CPU轻量化配置）}{15}{lstnumber.6.23}%
+\contentsline {paragraph}{模块3：视频逐帧检测（核心推理逻辑）}{16}{lstnumber.7.15}%
+\contentsline {paragraph}{模块4：资源释放与性能统计（收尾逻辑）}{18}{lstnumber.8.61}%
+\contentsline {paragraph}{5. 调试要点与问题解决}{20}{lstnumber.9.40}%
+\contentsline {subsection}{\numberline {2.3}目标检测测试与分析}{21}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}视频选择}{21}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}测试效果与分析}{21}{subsubsection.2.3.2}%
+\contentsline {paragraph}{1. 有效检测场景}{21}{Item.29}%
+\contentsline {paragraph}{2. 检测误差场景}{22}{Item.29}%
+\contentsline {paragraph}{1. 有效检测场景}{22}{Item.30}%
+\contentsline {paragraph}{2. 典型检测误差}{23}{Item.30}%
+\contentsline {subsection}{\numberline {2.4}总结与收获}{24}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}技术能力与工程实践提升}{24}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}目标检测技术认知深化}{26}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}校园场景应用与拓展思考}{26}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}核心感悟与思维升华}{26}{subsubsection.2.4.4}%
+\contentsline {section}{\numberline {3}AI+X项目汇报}{28}{section.3}%
+\contentsline {section}{附录}{39}{figure.caption.26}%
